@@ -1,6 +1,7 @@
 'use strict';
 
 var nodeModel = require('./lib/node');
+var notification = require('./lib/utils/notification')
 
 var node = new nodeModel();
 
@@ -28,5 +29,9 @@ process.on('message', function(msg) {
 	if (msg == 'shutdown')
 		gracefulShutdown();
 });
+
+// process.on('exit', async (msg) => {
+//     let data = await notification('node kill')
+// })
 
 module.exports = node;
